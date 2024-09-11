@@ -3,11 +3,11 @@
     {
       "eventName": "Beethoven Symphony No. 9",
       "category": "Concert",
+      "description": "Join us for an unforgettable evening as we present Beethoven's Symphony No. 9, one of the greatest masterpieces in classical music history! Let the sweeping melodies and triumphant Ode to Joy inspire your soul as a world-class orchestra and choir bring this iconic symphony to life. Feel the passion, the drama, and the celebration of the human spirit that has captivated audiences for centuries.",
       "eventDetails": [
         {
           "date": "2024-10-05",
           "time": "20:00",
-          "description": "Join us for an unforgettable evening as we present Beethoven's Symphony No. 9, one of the greatest masterpieces in classical music history! Let the sweeping melodies and triumphant Ode to Joy inspire your soul as a world-class orchestra and choir bring this iconic symphony to life. Feel the passion, the drama, and the celebration of the human spirit that has captivated audiences for centuries.",
           "ticketPrices": {
             "box": 300.00,
             "orchestra": 200.00,
