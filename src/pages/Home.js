@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EventCard from '../components/EventCard';
 import EventFilter from '../components/EventFilter';
-import eventsData from '../events-mock-data.json';
 import '../styles.css';
 
 function Home() {
-  const [filteredEvents, setFilteredEvents] = useState(eventsData.events);
+  const [filteredEvents, setFilteredEvents] = useState([]);
+
+  // Fetch the events data from the public folder
+  useEffect(() => {
+    fetch(`${process.env.PUBLIC_URL}/events-mock-data.json`)
+      .then((response) => response.json())
+      .then((data) => setFilteredEvents(data.events));
+  }, []);
 
   const handleFilterChange = (filters) => {
-    const filtered = eventsData.events.filter((event) => {
+    const filtered = filteredEvents.filter((event) => {
       const matchesSearch = event.eventName
         .toLowerCase()
         .includes(filters.search.toLowerCase());
@@ -53,7 +59,6 @@ function Home() {
 
   return (
     <div>
-      {/* Header and Footer have been removed */}
       <div className="main-section">
         <h1>Welcome to the Event Venue</h1>
         <button onClick={scrollDown}>Get Your Tickets Now!</button>

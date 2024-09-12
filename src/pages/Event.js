@@ -9,7 +9,7 @@ function EventPage() {
 
   useEffect(() => {
     // Fetch the events data from the JSON file
-    fetch('/events-mock-data.json') // Change the path accordingly
+    fetch(`${process.env.PUBLIC_URL}/events-mock-data.json`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch event data.');
