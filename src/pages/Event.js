@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function EventPage() {
   const { eventName, eventDate } = useParams(); // get URL parameters
   const [event, setEvent] = useState(null); // store the event object
   const [loading, setLoading] = useState(true); // handle loading state
   const [error, setError] = useState(null); // handle any fetch errors
+  const navigate = useNavigate(); // hook for navigation
 
   useEffect(() => {
     // Fetch the events data from the JSON file
@@ -65,6 +66,10 @@ function EventPage() {
     return <p>{error}</p>;
   }
 
+  const handleBuyTickets = () => {
+    navigate('/tickets');
+  };
+
   return (
     <div className="event-page">
       <h1>{event.eventName.replace(/-/g, ' ')} on {event.date}</h1>
@@ -77,7 +82,7 @@ function EventPage() {
         <li>Main Floor: ${event.ticketPrices.mainFloor}</li>
         <li>Balcony: ${event.ticketPrices.balcony}</li>
       </ul>
-      <button onClick={() => alert('Redirecting to ticket purchase page...')}>
+      <button onClick={handleBuyTickets}>
         Buy Tickets
       </button>
     </div>
