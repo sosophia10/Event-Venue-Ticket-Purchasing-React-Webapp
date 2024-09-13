@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function EventPage() {
   const { eventName, eventDate } = useParams(); // get URL parameters
   const [event, setEvent] = useState(null); // store the event object
   const [loading, setLoading] = useState(true); // handle loading state
   const [error, setError] = useState(null); // handle any fetch errors
-  const navigate = useNavigate(); // hook for navigation
 
   useEffect(() => {
     // Fetch the events data from the JSON file
-    fetch(`${process.env.PUBLIC_URL}/events-mock-data.json`)
+    fetch('/events-mock-data.json') // Change the path accordingly
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch event data.');
@@ -66,15 +65,17 @@ function EventPage() {
     return <p>{error}</p>;
   }
 
-  const handleBuyTickets = () => {
-    navigate('/tickets');
-  };
-
   return (
     <div className="event-page">
-      <h1>{event.eventName.replace(/-/g, ' ')} on {event.date}</h1>
-      <p>Description: {event.description}</p>
-      <p>Time: {event.time}</p>
+      <h1 style={{ textTransform: 'capitalize', textAlign: 'center' }}>
+        {event.eventName.replace(/-/g, ' ')}
+      </h1>
+      <h3>Description:</h3>
+      <p>{event.description}</p>
+      <h3>Date:</h3>
+      <p>{event.date}</p>
+      <h3>Time:</h3>
+      <p>{event.time}</p>
       <h3>Ticket Prices:</h3>
       <ul>
         <li>Box: ${event.ticketPrices.box}</li>
@@ -82,8 +83,21 @@ function EventPage() {
         <li>Main Floor: ${event.ticketPrices.mainFloor}</li>
         <li>Balcony: ${event.ticketPrices.balcony}</li>
       </ul>
-      <button onClick={handleBuyTickets}>
-        Buy Tickets
+      <button onClick={() => alert('Redirecting to ticket purchase page...')}
+        style = {{
+          display: 'block',
+          margin: '20px auto',
+          padding: '15px 30px',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          backgroundColor: '#FF6700',
+          color: 'white',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer'
+        }}
+      >
+        Buy Tickets!
       </button>
     </div>
   );
