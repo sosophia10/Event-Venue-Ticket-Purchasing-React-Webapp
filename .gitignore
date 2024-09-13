@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# exclude gh-pages cache
+/node_modules/.cache/gh-pages
 /.pnp
 .pnp.js
 
