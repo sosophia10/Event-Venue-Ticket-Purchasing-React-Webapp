@@ -83,22 +83,40 @@ function EventPage() {
         <li>Main Floor: ${event.ticketPrices.mainFloor}</li>
         <li>Balcony: ${event.ticketPrices.balcony}</li>
       </ul>
+      <div style = {{ display: 'flex', justifyContent: 'center', gap: '20px'}}>
       <button onClick={() => alert('Redirecting to ticket purchase page...')}
-        style = {{
-          display: 'block',
-          margin: '20px auto',
-          padding: '15px 30px',
-          fontSize: '20px',
-          fontWeight: 'bold',
-          backgroundColor: '#FF6700',
-          color: 'white',
-          border: 'none',
-          borderRadius: '8px',
-          cursor: 'pointer'
-        }}
-      >
-        Buy Tickets!
-      </button>
+          style = {{
+            display: 'block',
+            padding: '15px 30px',
+            fontSize: '20px',
+            fontWeight: 'bold',
+            backgroundColor: '#FF6700',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer'
+          }}
+        >
+          Go Back
+        </button>
+
+        <button onClick={() => alert('Redirecting to ticket purchase page...')}
+          style = {{
+            display: 'block',
+            padding: '15px 30px',
+            fontSize: '20px',
+            fontWeight: 'bold',
+            backgroundColor: '#FF6700',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer'
+          }}
+        >
+          Buy Tickets!
+        </button>
+        
+      </div>
     </div>
   );
 }
