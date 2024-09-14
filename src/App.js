@@ -1,23 +1,29 @@
 import React from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Event from './pages/Event';
-import Tickets from './pages/Tickets';
-import Cart from './pages/Cart';  
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <Router>
+      {/* Header will be rendered once for all routes */}
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/event/:eventName/:eventDate" element={<Event />} />
-        <Route path="/tickets" element={<Tickets />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/event/:eventName/:eventDate" element={<Event />}/>
+        
+        {/*paths for buttons on Events.js page*/}
+        <Route path="/" element={<Event />} />
+        <Route path="/buy-tickets" element={<Tickets />} />
+        <Route path="/event-details" element={<Home />} />
+
       </Routes>
+      {/* Footer will be rendered once for all routes */}
       <Footer />
+
+
     </Router>
   );
 }
