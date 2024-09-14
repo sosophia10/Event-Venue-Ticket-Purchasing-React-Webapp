@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 
 function EventPage() {
   const { eventName, eventDate } = useParams(); // get URL parameters
@@ -9,15 +10,15 @@ function EventPage() {
 
   useEffect(() => {
     // Fetch the events data from the JSON file
-    fetch('/events-mock-data.json') // Change the path accordingly
+    fetch('/Event-Venue-Ticket-Purchasing-React-Webapp/events-mock-data.json') // Change the path accordingly
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch event data.');
+          throw new Error(`Failed to fetch event data. Error: ${response.status} ${response.statusText}`);
         }
         return response.json();
       })
       .then((data) => {
-        console.log(data); // Check the fetched data structure
+        console.log('Data fetched:' ,data); // Check the fetched data structure
       const formattedEventName = decodeURIComponent(eventName).replace(/-/g, ' ');
 
       const foundEvent = data.events.find(
@@ -84,7 +85,8 @@ function EventPage() {
         <li>Balcony: ${event.ticketPrices.balcony}</li>
       </ul>
       <div style = {{ display: 'flex', justifyContent: 'center', gap: '20px'}}>
-      <button onClick={() => alert('Redirecting to ticket purchase page...')}
+        <Link to= "/Home">
+      <button 
           style = {{
             display: 'block',
             padding: '15px 30px',
@@ -99,8 +101,10 @@ function EventPage() {
         >
           Go Back
         </button>
+        </Link>
 
-        <button onClick={() => alert('Redirecting to ticket purchase page...')}
+        <Link to = "/Tickets">
+        <button 
           style = {{
             display: 'block',
             padding: '15px 30px',
@@ -115,9 +119,10 @@ function EventPage() {
         >
           Buy Tickets!
         </button>
-        
+        </Link>
       </div>
     </div>
+
   );
 }
 
